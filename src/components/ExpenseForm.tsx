@@ -53,7 +53,7 @@ export const ExpenseForm = ({ onAddExpense }: ExpenseFormProps) => {
 
   return (
     <form onSubmit={handleSubmit} className="">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {/* Campo Descripción */}
         <div className="flex flex-col">
           <label className="text-sm font-medium text-gray-900">Descripción</label>
