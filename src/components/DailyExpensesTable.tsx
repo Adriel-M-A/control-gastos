@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { formatCurrency } from "../utils/formatCurrency";
 
 interface Expense {
   id: number;
@@ -13,16 +14,6 @@ interface DailyExpensesTableProps {
 }
 
 export const DailyExpensesTable: FC<DailyExpensesTableProps> = ({ dailyExpenses }) => {
-  // Función para formatear el monto en pesos argentinos
-  const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat("es-AR", {
-      style: "currency",
-      currency: "ARS",
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2,
-    }).format(amount);
-  };
-
   return (
     <table className="min-w-full bg-white border border-gray-200">
       <thead>
