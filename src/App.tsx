@@ -1,4 +1,3 @@
-// Archivo: src/App.tsx
 import { useState } from "react";
 import { ExpenseForm } from "./components/ExpenseForm";
 import { DailyExpensesTable } from "./components/DailyExpensesTable";
@@ -59,28 +58,45 @@ const App = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold text-center mb-4">Control de Gastos</h1>
+    // Contenedor principal con fondo gris claro y altura mínima completa
+    <div className="min-h-screen bg-gray-100">
+      {/* Header con fondo blanco y sombra, siguiendo el estilo del ejemplo */}
+      <header className="bg-white shadow">
+        <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
+          <h1 className="text-3xl font-bold text-gray-900">Control de Gastos</h1>
+        </div>
+      </header>
 
-      {/* Sección de Tarjetas Resumen (ubicada al inicio) */}
-      <SummaryCards dailyExpenses={dailyExpenses} monthlyExpenses={monthlyExpenses} />
+      {/* Contenedor principal para el contenido */}
+      <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
+        {/* Sección de Tarjetas Resumen */}
+        <div className="mb-8">
+          <SummaryCards dailyExpenses={dailyExpenses} monthlyExpenses={monthlyExpenses} />
+        </div>
 
-      {/* Sección del Formulario */}
-      <div className="mb-8">
-        <ExpenseForm onAddExpense={addExpense} />
-      </div>
+        {/* Sección del Formulario */}
+        <div className="mb-8">
+          <div className="bg-white shadow rounded-lg p-6">
+            <ExpenseForm onAddExpense={addExpense} />
+          </div>
+        </div>
 
-      {/* Sección de Gastos Mensuales */}
-      <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-2">Gastos Mensuales</h2>
-        <MonthlyExpensesTable monthlyExpenses={monthlyExpenses} onToggleExpense={handleToggleMonthlyExpense} />
-      </div>
+        {/* Sección de Gastos Mensuales */}
+        <div className="mb-8">
+          <div className="bg-white shadow rounded-lg p-6">
+            <h2 className="text-xl font-semibold mb-4">Gastos Mensuales</h2>
+            <MonthlyExpensesTable monthlyExpenses={monthlyExpenses} onToggleExpense={handleToggleMonthlyExpense} />
+          </div>
+        </div>
 
-      {/* Sección de Gastos Diarios */}
-      <div>
-        <h2 className="text-xl font-semibold mb-2">Gastos del Día</h2>
-        <DailyExpensesTable dailyExpenses={dailyExpenses} />
-      </div>
+        {/* Sección de Gastos Diarios */}
+        <div>
+          <div className="bg-white shadow rounded-lg p-6">
+            <h2 className="text-xl font-semibold mb-4">Gastos del Día</h2>
+            <DailyExpensesTable dailyExpenses={dailyExpenses} />
+          </div>
+        </div>
+      </main>
     </div>
   );
 };

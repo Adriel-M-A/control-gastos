@@ -41,26 +41,26 @@ export const SummaryCards: FC<SummaryCardsProps> = ({ dailyExpenses, monthlyExpe
   );
 
   return (
-    <div className="flex flex-col md:flex-row gap-4 mb-8">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
       {/* Tarjeta Total Gastado */}
-      <div className="flex-1 p-4 bg-white border rounded shadow">
-        <h3 className="text-lg font-bold mb-2">Total Gastado</h3>
-        <p className="text-2xl">{formatCurrency(totalGastado)}</p>
-        <p className="text-sm text-gray-500">Gastos diarios registrados: {totalGastosDiarios}</p>
+      <div className="bg-white shadow rounded-lg p-6">
+        <h3 className="text-lg font-medium text-gray-900">Total Gastado</h3>
+        <p className="text-3xl font-bold text-green-500">{formatCurrency(totalGastado)}</p>
+        <p className="text-sm text-gray-500 mt-1">Gastos diarios registrados: {totalGastosDiarios}</p>
       </div>
 
       {/* Tarjeta Gastos Mensuales Pendientes */}
-      <div className="flex-1 p-4 bg-white border rounded shadow">
-        <h3 className="text-lg font-bold mb-2">Gastos Mensuales Pendientes</h3>
-        <p className="text-2xl">{formatCurrency(gastosMensualesPendientes)}</p>
-        <p className="text-sm text-gray-500">Gastos mensuales no aplicados: {totalGastosMensualesPendientes}</p>
+      <div className="bg-white shadow rounded-lg p-6">
+        <h3 className="text-lg font-medium text-gray-900">Gastos Mensuales Pendientes</h3>
+        <p className="text-3xl font-bold text-orange-500">{formatCurrency(gastosMensualesPendientes)}</p>
+        <p className="text-sm text-gray-500 mt-1">Gastos mensuales no aplicados: {totalGastosMensualesPendientes}</p>
       </div>
 
       {/* Tarjeta Categoría de Mayor Gasto */}
-      <div className="flex-1 p-4 bg-white border rounded shadow">
-        <h3 className="text-lg font-bold mb-2">Categoría de Mayor Gasto</h3>
-        <p className="text-2xl">{formatCurrency(montoMayor)}</p>
-        <p className="text-sm text-gray-500">Categoría: {categoriaMayor || "N/A"}</p>
+      <div className="bg-white shadow rounded-lg p-6">
+        <h3 className="text-lg font-medium text-gray-900">Categoría de Mayor Gasto</h3>
+        <p className="text-3xl font-bold text-orange-600">{formatCurrency(montoMayor)}</p>
+        <p className="text-sm text-gray-500 mt-1">Categoría: {categoriaMayor || "N/A"}</p>
       </div>
     </div>
   );
