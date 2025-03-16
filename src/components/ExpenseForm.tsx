@@ -1,3 +1,4 @@
+// Archivo: src/components/ExpenseForm.tsx
 import { useState, FormEvent } from "react";
 
 interface Expense {
@@ -13,9 +14,12 @@ interface ExpenseFormProps {
 }
 
 export const ExpenseForm = ({ onAddExpense }: ExpenseFormProps) => {
+  // Lista de categorías existentes
+  const categories = ["Comida", "Transporte", "Entretenimiento", "Vivienda", "Otros"];
+
   // Estados locales para cada campo del formulario
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState(""); // Inicia vacío o con una categoría por defecto
   const [amount, setAmount] = useState<number>(0);
   const [date, setDate] = useState("");
 
@@ -31,14 +35,14 @@ export const ExpenseForm = ({ onAddExpense }: ExpenseFormProps) => {
 
     // Creación de un nuevo objeto gasto
     const newExpense: Expense = {
-      id: Date.now(), // Usamos timestamp para generar un id único
+      id: Date.now(), // Usamos el timestamp para generar un id único
       description,
       category,
       amount,
       date,
     };
 
-    // Se invoca la función callback para agregar el gasto
+    // Invocar la función callback para agregar el gasto
     onAddExpense(newExpense);
 
     // Limpiar el formulario después de enviar
@@ -61,15 +65,17 @@ export const ExpenseForm = ({ onAddExpense }: ExpenseFormProps) => {
         />
       </div>
 
-      {/* Campo Categoría */}
+      {/* Campo Categoría como Select */}
       <div className="flex flex-col flex-1">
         <label className="text-sm font-medium">Categoría</label>
-        <input
-          type="text"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-          className="mt-1 border rounded p-2"
-        />
+        <select value={category} onChange={(e) => setCategory(e.target.value)} className="mt-1 border rounded p-2">
+          <option value="">Seleccione categoría</option>
+          {categories.map((cat) => (
+            <option key={cat} value={cat}>
+              {cat}
+            </option>
+          ))}
+        </select>
       </div>
 
       {/* Campo Monto */}
