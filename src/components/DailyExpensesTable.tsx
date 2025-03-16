@@ -1,4 +1,3 @@
-// Archivo: src/components/DailyExpensesTable.tsx
 import { FC } from "react";
 
 interface Expense {
@@ -14,6 +13,16 @@ interface DailyExpensesTableProps {
 }
 
 export const DailyExpensesTable: FC<DailyExpensesTableProps> = ({ dailyExpenses }) => {
+  // Función para formatear el monto en pesos argentinos
+  const formatCurrency = (amount: number) => {
+    return new Intl.NumberFormat("es-AR", {
+      style: "currency",
+      currency: "ARS",
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(amount);
+  };
+
   return (
     <table className="min-w-full bg-white border border-gray-200">
       <thead>
@@ -29,7 +38,7 @@ export const DailyExpensesTable: FC<DailyExpensesTableProps> = ({ dailyExpenses 
           <tr key={expense.id}>
             <td className="py-2 px-4 border-b">{expense.description}</td>
             <td className="py-2 px-4 border-b">{expense.category}</td>
-            <td className="py-2 px-4 border-b">${expense.amount}</td>
+            <td className="py-2 px-4 border-b">{formatCurrency(expense.amount)}</td>
             <td className="py-2 px-4 border-b">{expense.date}</td>
           </tr>
         ))}

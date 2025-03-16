@@ -1,4 +1,3 @@
-// Archivo: src/components/ExpenseForm.tsx
 import { useState, FormEvent } from "react";
 
 interface Expense {
@@ -83,6 +82,7 @@ export const ExpenseForm = ({ onAddExpense }: ExpenseFormProps) => {
         <label className="text-sm font-medium">Monto</label>
         <input
           type="number"
+          step="0.01"
           value={amount}
           onChange={(e) => setAmount(Number(e.target.value))}
           className="mt-1 border rounded p-2"
